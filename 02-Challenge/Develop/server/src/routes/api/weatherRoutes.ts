@@ -1,5 +1,4 @@
 import { Router, type Request, type Response } from 'express';
-import type { WeatherDataType } from '../../types/weatherTypes';
 import HistoryService from '../../service/historyService.js';
 import WeatherService from '../../service/weatherService.js';
 const router = Router();
@@ -12,7 +11,7 @@ router.post('/', async (req: Request, res: Response) => {
     if (!city) {
       return res.status(400).json({ 'error': 'City name is required' });
     }
-    const weatherData: WeatherDataType = await WeatherService.getWeatherForCity(city);
+    const weatherData = await WeatherService.getWeatherForCity(city);
     return res.json(weatherData);
   } catch (error) {
     console.error('Error in retrieving weather data', error);
@@ -25,7 +24,7 @@ router.post('/', async (req: Request, res: Response) => {
       if (!city) {
         return res.status(400).json({ error: 'City name is required' });
       }
-      const weatherData: WeatherDataType = await WeatherService.getWeatherForCity(city);
+      const weatherData = await WeatherService.getWeatherForCity(city);
       await HistoryService.addCity(city);
       return res.json(weatherData);
     } catch (error) {
