@@ -1,10 +1,10 @@
 import './styles/jass.css';
 
 // * All necessary DOM elements selected
-const searchForm: HTMLFormElement = document.getElementById(
+const searchForm = document.getElementById(
   'search-form'
 ) as HTMLFormElement;
-const searchInput: HTMLInputElement = document.getElementById(
+const searchInput = document.getElementById(
   'search-input'
 ) as HTMLInputElement;
 const todayContainer = document.querySelector('#today') as HTMLDivElement;
@@ -77,6 +77,7 @@ Render Functions
 */
 
 const renderCurrentWeather = (currentWeather: any): void => {
+ console.log (currentWeather);
   const { city, date, icon, iconDescription, tempF, windSpeed, humidity } =
     currentWeather;
 
@@ -250,6 +251,7 @@ Event Handlers
 */
 
 const handleSearchFormSubmit = (event: any): void => {
+  console.log('hello');
   event.preventDefault();
 
   if (!searchInput.value) {
